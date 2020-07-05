@@ -1,4 +1,4 @@
-# 0.2.0
+# 0.2.0-dev.1
 
 - **BREAKING**: rename `Transition` to `CubitTransition`
 
