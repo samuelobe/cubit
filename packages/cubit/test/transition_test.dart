@@ -26,12 +26,12 @@ class CounterState extends TransitionState {
 void main() {
   group('Transition', () {
     group('== operator', () {
-      test('should return true if 2 Transitions are equal', () {
-        final transitionA = Transition<CounterState>(
+      test('should return true if transitions are equal', () {
+        final transitionA = CubitTransition<CounterState>(
           currentState: CounterState(0),
           nextState: CounterState(1),
         );
-        final transitionB = Transition<CounterState>(
+        final transitionB = CubitTransition<CounterState>(
           currentState: CounterState(0),
           nextState: CounterState(1),
         );
@@ -39,12 +39,12 @@ void main() {
         expect(transitionA == transitionB, isTrue);
       });
 
-      test('should return false if 2 Transitions are not equal', () {
-        final transitionA = Transition<CounterState>(
+      test('should return false if transitions are not equal', () {
+        final transitionA = CubitTransition<CounterState>(
           currentState: CounterState(0),
           nextState: CounterState(1),
         );
-        final transitionB = Transition<CounterState>(
+        final transitionB = CubitTransition<CounterState>(
           currentState: CounterState(1),
           nextState: CounterState(0),
         );
@@ -55,7 +55,7 @@ void main() {
 
     group('hashCode', () {
       test('should be correct', () {
-        final transition = Transition<CounterState>(
+        final transition = CubitTransition<CounterState>(
           currentState: CounterState(0),
           nextState: CounterState(1),
         );
@@ -68,14 +68,14 @@ void main() {
 
     group('toString', () {
       test('should return correct string representation', () {
-        final transition = Transition<CounterState>(
+        final transition = CubitTransition<CounterState>(
           currentState: CounterState(0),
           nextState: CounterState(1),
         );
 
         expect(
           transition.toString(),
-          '''Transition { currentState: ${transition.currentState}, nextState: ${transition.nextState} }''',
+          '''CubitTransition { currentState: ${transition.currentState}, nextState: ${transition.nextState} }''',
         );
       });
     });

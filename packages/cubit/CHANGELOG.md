@@ -1,3 +1,7 @@
+# 0.2.0
+
+- **BREAKING**: rename `Transition` to `CubitTransition`
+
 # 0.1.0
 
 - docs: add `onTransition` documentation to README

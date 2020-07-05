@@ -25,7 +25,7 @@ void main() {
       });
 
       test('is not called for the initial state', () async {
-        final transitions = <Transition<int>>[];
+        final transitions = <CubitTransition<int>>[];
         final cubit = CounterCubit(onTransitionCallback: transitions.add);
         await cubit.close();
         expect(transitions, isEmpty);
@@ -34,23 +34,23 @@ void main() {
 
       test('is called with correct transition for a single state change',
           () async {
-        final transitions = <Transition<int>>[];
+        final transitions = <CubitTransition<int>>[];
         final cubit = CounterCubit(onTransitionCallback: transitions.add);
         await Future<void>.delayed(Duration.zero, cubit.increment);
         await cubit.close();
         expect(
           transitions,
-          const [Transition(currentState: 0, nextState: 1)],
+          const [CubitTransition(currentState: 0, nextState: 1)],
         );
         verify(observer.onTransition(
           cubit,
-          const Transition<int>(currentState: 0, nextState: 1),
+          const CubitTransition<int>(currentState: 0, nextState: 1),
         )).called(1);
       });
 
       test('is called with correct transitions for multiple state changes',
           () async {
-        final transitions = <Transition<int>>[];
+        final transitions = <CubitTransition<int>>[];
         final cubit = CounterCubit(onTransitionCallback: transitions.add);
         await Future<void>.delayed(Duration.zero);
         cubit..increment()..increment();
@@ -58,17 +58,17 @@ void main() {
         expect(
           transitions,
           const [
-            Transition(currentState: 0, nextState: 1),
-            Transition(currentState: 1, nextState: 2),
+            CubitTransition(currentState: 0, nextState: 1),
+            CubitTransition(currentState: 1, nextState: 2),
           ],
         );
         verify(observer.onTransition(
           cubit,
-          const Transition<int>(currentState: 0, nextState: 1),
+          const CubitTransition<int>(currentState: 0, nextState: 1),
         )).called(1);
         verify(observer.onTransition(
           cubit,
-          const Transition<int>(currentState: 1, nextState: 2),
+          const CubitTransition<int>(currentState: 1, nextState: 2),
         )).called(1);
       });
     });

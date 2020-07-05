@@ -45,7 +45,7 @@ class CounterCubit extends Cubit<int> {
   void increment() => emit(state + 1);
 
   @override
-  void onTransition(Transition<int> transition) {
+  void onTransition(CubitTransition<int> transition) {
     print(transition);
     super.onTransition(transition);
   }
@@ -57,7 +57,7 @@ class CounterCubit extends Cubit<int> {
 ```dart
 class MyCubitObserver extends CubitObserver {
   @override
-  void onTransition(Cubit cubit, Transition transition) {
+  void onTransition(Cubit cubit, CubitTransition transition) {
     print(transition);
     super.onTransition(cubit, transition);
   }

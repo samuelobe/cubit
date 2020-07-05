@@ -42,7 +42,7 @@ abstract class Cubit<State> extends CubitStream<State> {
   /// **Note: `super.onTransition` should always be called last.**
   /// ```dart
   /// @override
-  /// void onTransition(Transition transition) {
+  /// void onTransition(CubitTransition transition) {
   ///   // Custom onTransition logic goes here
   ///
   ///   // Always call super.onTransition with the current transition
@@ -54,13 +54,15 @@ abstract class Cubit<State> extends CubitStream<State> {
   ///
   /// * [CubitObserver] for observing [Cubit] behavior globally.
   @mustCallSuper
-  void onTransition(Transition<State> transition) {
+  void onTransition(CubitTransition<State> transition) {
     observer.onTransition(this, transition);
   }
 
   @override
   void emit(State state) {
-    onTransition(Transition<State>(currentState: this.state, nextState: state));
+    onTransition(
+      CubitTransition<State>(currentState: this.state, nextState: state),
+    );
     super.emit(state);
   }
 }

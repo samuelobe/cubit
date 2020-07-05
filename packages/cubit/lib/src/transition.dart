@@ -1,24 +1,27 @@
 import 'package:meta/meta.dart';
 
 /// {@template transition}
-/// A [Transition] represents the change from one [State] to another.
-/// A [Transition] consists of the [currentState] and [nextState].
+/// A [CubitTransition] represents the change from one [State] to another.
+/// A [CubitTransition] consists of the [currentState] and [nextState].
 /// {@endtemplate}
 @immutable
-class Transition<State> {
+class CubitTransition<State> {
   /// {@macro transition}
-  const Transition({@required this.currentState, @required this.nextState});
+  const CubitTransition({
+    @required this.currentState,
+    @required this.nextState,
+  });
 
-  /// The current [State] at the time of the [Transition].
+  /// The current [State] at the time of the [CubitTransition].
   final State currentState;
 
-  /// The next [State] at the time of the [Transition].
+  /// The next [State] at the time of the [CubitTransition].
   final State nextState;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Transition<State> &&
+      other is CubitTransition<State> &&
           runtimeType == other.runtimeType &&
           currentState == other.currentState &&
           nextState == other.nextState;
@@ -28,6 +31,6 @@ class Transition<State> {
 
   @override
   String toString() {
-    return 'Transition { currentState: $currentState, nextState: $nextState }';
+    return '''CubitTransition { currentState: $currentState, nextState: $nextState }''';
   }
 }

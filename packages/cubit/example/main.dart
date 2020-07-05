@@ -2,7 +2,7 @@ import 'package:cubit/cubit.dart';
 
 class MyCubitObserver extends CubitObserver {
   @override
-  void onTransition(Cubit cubit, Transition transition) {
+  void onTransition(Cubit cubit, CubitTransition transition) {
     print(transition);
     super.onTransition(cubit, transition);
   }

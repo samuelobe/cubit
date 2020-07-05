@@ -9,5 +9,5 @@ class CubitObserver {
   /// A [transition] occurs when a new state is emitted.
   /// [onTransition] is called before a cubit's state has been updated.
   @mustCallSuper
-  void onTransition(Cubit cubit, Transition transition) {}
+  void onTransition(Cubit cubit, CubitTransition transition) {}
 }
